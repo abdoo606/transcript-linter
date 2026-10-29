@@ -1,0 +1,12 @@
+{
+  "task": "Add currency rounding to invoice totals in src/invoice.py",
+  "steps": [
+    {"role": "assistant", "kind": "text", "text": "Goal: round invoice totals to 2dp. Assumption: banker's rounding is unwanted, use ROUND_HALF_UP."},
+    {"role": "assistant", "kind": "edit", "path": "src/invoice.py"},
+    {"role": "assistant", "kind": "tool", "tool": "bash", "command": "python -m unittest", "ok": false},
+    {"role": "assistant", "kind": "text", "text": "Test failed: expected 2.35, got 2.34. The quantize context was wrong."},
+    {"role": "assistant", "kind": "edit", "path": "src/invoice.py"},
+    {"role": "assistant", "kind": "tool", "tool": "bash", "command": "python -m unittest", "ok": true},
+    {"role": "assistant", "kind": "text", "text": "All tests pass. Changed rounding to ROUND_HALF_UP in invoice.py; no other files touched."}
+  ]
+}
